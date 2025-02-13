@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>PackNow</title>
+	<div th:replace="~{head :: frag_head}"></div>
+
+</head>
+
+<body  >
+	<div th:replace="~{layoutBase :: frag_body}"></div>
+	<header >
+		<div th:insert:"~{header :: frag_header}"></div>
+
+	</header>
+	    <!-- Conteúdo da página -->
+		<main>
+		<div class="container">
+		      <a class="navbar-brand " href="#" style="">
+				<img th:src="@{/img/imagem_home_2.png}" alt="imagem_home">
+			  </a>
+	
+		</div>				
+		</main>
+		<div th:insert="~{footer :: frag_footer}"></div>
+	
+</body>
+
+</html>

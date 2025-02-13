@@ -1,0 +1,29 @@
+<!doctype html>
+<div th:fragment="layoutBase" >
+	<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th=http://www.thymeleaf.org lang="pt-br" class="h-100" data-bs-theme="auto">
+	<head>
+		<title>Title do layoutBase</title>
+		<div th:replace="head :: frag_head"></div>
+	</head>
+	  <!--   tentativa de fragmento no body-->
+	<body  th:fragment ="frag_body" class="d-flex flex-column h-100" style="background-color: white;color: black;">
+	   
+	<header>
+		<div th:replace="~{header :: frag_header}"></div>
+	</header>
+	
+	
+	<!-- Begin page content 
+		<main>
+		  		
+			<div class="container">
+				<h1 class="mt-5">LayoutBase</h1>
+			</div>
+		</main>
+-->	
+		<div th:insert="~{footer :: frag_footer}"></div>
+	
+	</body>
+	</html>
+</div>
+

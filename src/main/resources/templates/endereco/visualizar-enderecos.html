@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Visualizar endereços</title>
+	<div th:replace="~{head :: frag_head}"></div>
+				<!-- Adicionando o jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body >
+	<div th:replace="~{layoutBase :: frag_body}"></div>
+	<header >
+		<div th:insert:"~{header :: frag_header}"></div>
+
+	</header>
+	    <!-- Conteúdo da página -->
+<main>
+ <div class="container">
+	 	  <!-- Barra de pesquisa -->
+		<div  class="row">
+				<div >
+				  	<h1> <i class="fa fa-building"></i> <b>Lista de endereços</b></h1>
+				</div>
+  				<div class="col-md-4 offset-md-4">
+				</div>		
+		</div>
+				<hr>
+    <table  id="enderecosTable" class="table table-striped">
+		<div  class="row">
+			<div class="col-md-4"></div>
+  				<div class="col-md-4 offset-md-4">
+					<div class="d-flex align-items-center">
+				        <i class="fas fa-search" style="font-size: 25px; margin-right: 8px; padding-bottom: 10px;"></i>
+				        <input type="text" id="searchInput" class="form-control mb-3" style="width: 350px;" placeholder="Entre com um termo para pesquisar na lista...">
+				    </div>
+			</div>		
+		</div>
+      <thead >
+        <tr class="table-light">
+          <th>Id</th>
+          <th>Bloco</th>
+          <th>Número</th>
+          <th style="text-align: center;">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- tabela com os dados dos endereços -->
+        <tr class="table-light" th:each="endereco: ${endereco_lista}">
+          <td th:text="${endereco.id}"></td>
+          <td th:text="${endereco.bloco}"></td>
+          <td th:text="${endereco.numero}"></td>
+          <td style="text-align: center;">
+            <!-- Botões de editar e deletar -->
+            <a style="margin-right: 5px;" th:href="@{/endereco/edit/{id}(id=${endereco.id})}" class="btn btn-primary">Editar</a>
+			<a href="#" class="btn btn-danger deleteButton" th:href="@{/endereco/delete/{id}(id=${endereco.id})}">Deletar</a>
+          </td>
+      </tbody>
+    </table>
+  </div>							
+		</main>
+		<div th:insert="~{footer :: frag_footer}"></div>
+	
+</body>
+	<!-- Adicionando o Bootstrap JavaScript -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+	<script>
+	  $(document).ready(function(){
+	    // Adicionando funcionalidade de pesquisa
+	    $('#searchInput').on('keyup', function(){
+	      var searchText = $(this).val().toLowerCase();
+	      $('#enderecosTable tbody tr').each(function(){
+	        var rowData = $(this).text().toLowerCase();
+	        if(rowData.indexOf(searchText) == -1){
+	          $(this).hide();
+	        } else {
+	          $(this).show();
+	        }
+	      });
+	    });
+	  });
+	</script>
+		<script>
+		    // Seleciona todos os elementos com a classe deleteButton
+		    var deleteButtons = document.querySelectorAll('.deleteButton');
+		
+		    // Adiciona um evento de clique para cada botão de exclusão
+		    deleteButtons.forEach(function(button) {
+		        button.addEventListener("click", function(event) {
+		            event.preventDefault(); // Evita que o link seja seguido imediatamente
+		
+		            // Mostra o pop-up de confirmação
+		            var confirmDelete = confirm("Você tem certeza que quer deletar esse endereço?");
+		
+		            // Se o usuário confirmar, segue com a deleção
+		            if (confirmDelete) {
+		                window.location.href = event.target.getAttribute("href");
+		            }
+		        });
+		    });
+		</script>
+
+</html>

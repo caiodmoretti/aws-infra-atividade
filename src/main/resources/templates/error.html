@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Erro!</title>
+	<div th:replace="~{head :: frag_head}"></div>
+
+</head>
+
+<body >
+	<div th:replace="~{layoutBase :: frag_body}"></div>
+	<header >
+		<div th:insert:"~{header :: frag_header}"></div>
+
+	</header>
+	    <!-- Conteúdo da página -->
+		<main>
+
+		<div class="container">
+			<h1>Houve um erro na aplicação.</h1>
+			<table>
+				<tr>
+					<td>Date</td>
+					<td th:text="${timestamp}"></td>
+				</tr>
+				<tr>
+					<td>Path</td>
+					<td th:text="${path}"></td>
+				</tr>
+				<tr>
+					<td>Status</td>
+					<td th:text="${status}"></td>
+				</tr>
+			</table>
+            <h4 th:utext="${message}">message</h3th>
+		</div>				
+		</main>
+		<div th:insert="~{footer :: frag_footer}"></div>
+	
+</body>
+
+</html>

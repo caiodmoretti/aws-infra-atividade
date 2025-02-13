@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Adicionar morador</title>
+    <div th:replace="~{head :: frag_head}"></div>
+    
+</head>
+
+<body>
+    <div th:replace="~{layoutBase :: frag_body}"></div>
+    <header>
+        <div th:insert="~{header :: frag_header}"></div>
+    </header>
+    <!-- Conteúdo da página -->
+    <main>
+	 <div class="container">
+	    <h1> <i class="fa fa-user" aria-hidden="true"> </i> Entre com as informações do morador</h1>
+	    <hr>
+	    <h3>Morador</h3>
+	    <form th:action="@{/morador/registrar}" th:object="${morador}" method="post">
+	        <label for="nome">Nome:</label>
+	        <input type="text" class="form-control" style="width: 350px; border-color: black" id="nome" name="nome" ><br>
+	        <label for="cpf">CPF:</label>
+	        <input type="text" class="form-control" style="width: 350px; border-color: black" id="cpf" name="cpf" placeholder="Entre com os 11 dígitos do CPF..." required ><br>
+	        <label for="telefone">Telefone:</label>
+	        <input type="text" class="form-control" style="width: 350px; border-color: black"  id="telefone" name="telefone"><br>
+	
+	        
+			<label for="enderecoId"><h3>Selecione o Endereço:</h3></label>
+
+			<div class="dropdown">
+			    <select class="btn btn-primary" style=" width: 250px;" id="enderecoId" name="enderecoId" data-toggle="dropdown">
+			        <option value="" selected>Escolha o endereço</option>
+			        <option th:each="endereco : ${enderecos}" th:value="${endereco.id}" th:text="${'Bloco ' + endereco.bloco + ' - Número ' + endereco.numero}"></option>
+			    </select>
+			</div>
+
+
+	    <br>	
+	        <input  class="btn btn-primary" type="submit" value="Adicionar">
+	       	<a th:href="@{/}" class="btn btn-secondary">Voltar</a>
+	    </form>
+	    <br>
+	</div>
+    </main>
+    <div th:insert="~{footer :: frag_footer}"></div>
+
+</script>
+
+</body>
+
+</html>

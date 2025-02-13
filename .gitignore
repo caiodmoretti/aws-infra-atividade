@@ -1,0 +1,23 @@
+HELP.md
+
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+
+
+### NetBeans ###
+
+
+### VS Code ###
+.vscode/
+
+
+### DB ###

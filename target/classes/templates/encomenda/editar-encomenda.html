@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Editar encomenda</title>
+    <div th:replace="~{head :: frag_head}"></div>
+</head>
+
+<body>
+    <div th:replace="~{layoutBase :: frag_body}"></div>
+    <header>
+        <div th:insert="~{header :: frag_header}"></div>
+    </header>
+    <!-- Conteúdo da página -->
+    <main>
+        <div class="container">
+            <h1> <i class="fa fa-archive "style="margin-right: 8px;"> </i> Faça a edição das informações da encomenda</h1>
+            <hr>
+            <form th:action="@{/encomenda/update/{id}(id=${encomenda.id})}" th:object="${encomenda}" method="post">
+			<label for="funcionarioId"><h3>Selecione o Funcionário que recebeu a encomenda</h3></label>
+			<div class="dropdown">
+			    <select class="btn btn-primary" style=" width: 300px;" id="funcionarioId" name="funcionarioId" data-toggle="dropdown">
+			        <option value="" selected>Escolha o funcionário de entrada</option>
+			        <option th:each="funcionario : ${funcionarios}" th:value="${funcionario.id}" th:text="${funcionario.nome + ' - ' +funcionario.cargo }"></option>
+			    </select>
+			</div>
+			<br>
+			<label for="enderecoId"><h3>Selecione o endereço de entrega</h3></label>
+				<div class="dropdown">
+				    <select class="btn btn-primary" style=" width: 300px;" id="enderecoId" name="enderecoId" data-toggle="dropdown">
+				     <option value="" selected>Escolha o endereço</option>
+				     <option th:each="endereco : ${enderecos}" th:value="${endereco.id}" th:text="${'Bloco ' + endereco.bloco + ' - Número ' + endereco.numero}"></option>
+				    </select>
+				</div>
+				<br>
+            <label for="nome">Nome do entregador:</label>
+	        	<input type="text" class="form-control" style="width: 350px; border-color: black" id="nomeEntregador" name="nomeEntregador" ><br>
+			<label for="nome">Telefone do entregador:</label>
+	        	<input type="text" class="form-control" style="width: 350px; border-color: black" id="telefoneEntregador" name="telefoneEntregador"><br>
+            <div style="padding-top: 10px;">
+				<br>
+			<label for="funcionarioSaidaId"><h3>Selecione o Funcionário que liberou a encomenda</h3></label>
+			<div class="dropdown">
+			    <select class="btn btn-primary" style=" width: 300px;" id="funcionarioSaidaId" name="funcionarioSaidaId" data-toggle="dropdown">
+			        <option value="" selected>Escolha o funcionário de saida</option>
+			        <option th:each="funcionario : ${funcionarios}" th:value="${funcionario.id}" th:text="${funcionario.nome + ' - ' +funcionario.cargo }"></option>
+			    </select>
+			</div>
+			<br>
+			<label for="enderecoId"><h3>Selecione o morador que retirou a encomenda</h3></label>
+				<div class="dropdown">
+				    <select class="btn btn-primary" style=" width: 300px;" id="moradorId" name="moradorId" data-toggle="dropdown">
+				        <option value="" selected>Escolha o morador</option>
+				        <option th:each="morador : ${moradores}" th:value="${morador.id}" th:text="${'Nome ' + morador.nome+ ' - CPF ' + morador.cpf}"></option>
+				    </select>
+			</div>
+			<br>
+                <div style="padding-top: 10px;">
+                    <input class="btn btn-primary" type="submit" value="Atualizar">
+                    <a th:href="@{/encomenda/listar}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+            <br>
+            <h4 th:utext="${message}">message</h4>
+        </div>
+    </main>
+    <div th:insert="~{footer :: frag_footer}"></div>
+</body>
+
+</html>

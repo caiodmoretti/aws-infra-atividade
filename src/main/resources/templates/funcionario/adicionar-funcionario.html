@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Adicionar funcionário</title>
+    <div th:replace="~{head :: frag_head}"></div>
+</head>
+
+<body>
+    <div th:replace="~{layoutBase :: frag_body}"></div>
+    <header>
+        <div th:insert="~{header :: frag_header}"></div>
+    </header>
+    <!-- Conteúdo da página -->
+    <main>
+        <div class="container">
+            <h1> <i class="fa fa-id-badge" aria-hidden="true"></i> Entre com as informações do funcionário</h1>
+            <hr>
+            <form action="#" th:action="@{/funcionario/registrar}" th:object="${funcionario}" method="post" >
+                <div class="form-group">
+                    <label for="bloco" >Nome:</label>
+                    <input type="text" class="form-control" style="width: 350px;" th:field="*{nome}">
+                </div>
+                <div class="form-group">
+                    <label for="numero">CPF:</label>
+                    <input type="text" class="form-control" style="width: 350px;" th:field="*{cpf}">
+                </div>
+                 <div class="form-group">
+                    <label for="numero">Telefone:</label>
+                    <input type="text" class="form-control" style="width: 350px;" th:field="*{telefone}">
+                </div>
+                <div class="form-group">
+                    <label for="numero">Cargo:</label>
+                    <input type="text" class="form-control" style="width: 350px;" th:field="*{cargo}">
+                </div>
+	            <div style="padding-top: 10px;">
+					<input class="btn btn-primary" type="submit" value="Adicionar">
+	                <a  th:href="@{/}" class="btn btn-secondary">Voltar</a>
+				</div>
+            </form>
+            <br>
+            <h4 th:utext="${message}">message</h3th>
+
+        </div>
+    </main>
+    <div th:insert="~{footer :: frag_footer}"></div>
+</body>
+
+</html>
