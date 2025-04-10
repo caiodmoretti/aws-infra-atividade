@@ -1,6 +1,4 @@
-Aqui está uma versão atualizada do seu `README.md` com as alterações solicitadas:
 
----
 
 ## Projeto da Disciplina BSI AWS - 2024.2
 
