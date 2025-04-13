@@ -1,27 +1,42 @@
-HELP.md
-
-
 ### STS ###
 .apt_generated
 .classpath
 .factorypath
 .project
-.settings
+.settings/
 .springBeans
-.sts4-cache
+.sts4-cache/
 
 ### IntelliJ IDEA ###
-
+.idea/
+*.iml
 
 ### NetBeans ###
-
+nbproject/
+build/
 
 ### VS Code ###
 .vscode/
 
+### Maven ###
+/target/
+!.mvn/wrapper/maven-wrapper.jar
 
-### DB ###
+### Logs ###
+*.log
 
-### env ###
+### Banco de Dados ###
+*.h2.db
+*.mv.db
+*.sqlite
+
+### Arquivos de ambiente ###
 .env
 .env-example
+
+### Arquivos do sistema ###
+.DS_Store
+Thumbs.db
+
+### Outros ###
+/out/
